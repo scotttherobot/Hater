@@ -3,6 +3,10 @@ class Device < ActiveRecord::Base
 
   after_initialize :init
 
+  validates_presence_of :token
+  validates_presence_of :device_type
+  validates_uniqueness_of :token
+
   def init
      self.enabled = 1
   end
