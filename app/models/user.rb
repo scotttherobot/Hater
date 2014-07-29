@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
    has_many :enemies, :foreign_key => 'user_id'
    has_many :users, :through => :enemies, :foreign_key => 'person_id'
+   has_many :devices
 
    attr_accessor :password
    before_save :encrypt_password
