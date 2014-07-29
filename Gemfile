@@ -18,6 +18,9 @@ gem 'bcrypt', '~> 3.1.7'
 # postgres
 gem 'pg'
 
+# The push notification gem
+gem 'pushmeup'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
