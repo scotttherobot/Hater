@@ -7,7 +7,7 @@ class Api::V1::SessionsController < ApiController
       @user = User.authenticate(params[:username], params[:password])
       # If our user object is false (bad creds), thrown an error
       if !@user
-         api_response(400, "Invalid credentials")
+         api_response(400, "Invalid credentials") and return
       end
       # Otherwise, give the user a new session.
       @user.update(:api_token => SecureRandom.hex)

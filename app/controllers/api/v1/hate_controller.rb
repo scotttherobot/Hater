@@ -16,7 +16,7 @@ class Api::V1::HateController < ApiController
          api_response(400, "invalid parameters") and return
       end
 
-      data = { :title => user.username, :message => insult.body }
+      data = { :title => user.username, :message => "says " + insult.body }
 
       # Send it to all of their devices, because why not?
       devices.each do |device|
