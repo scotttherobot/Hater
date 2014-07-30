@@ -12,6 +12,7 @@ Rails.application.routes.draw do
          # Auth stuff
          post "login" => "sessions#create", :as => "log_in"
          delete "logout" => "sessions#destroy", :as => "log_out"
+         resources :users, :only => [:create]
       end
    end
 end
