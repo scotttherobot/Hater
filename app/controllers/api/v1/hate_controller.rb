@@ -11,7 +11,7 @@ class Api::V1::HateController < ApiController
 
       # Setup APNS
       APNS.host = "gateway.sandbox.push.apple.com"
-      APNS.pem = "/home/scott/rails/h8r/certs/ck.pem"
+      APNS.pem = "certs/ck.pem"
       APNS.pass = "anncoulter"
 
       begin
