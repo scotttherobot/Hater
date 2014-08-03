@@ -16,6 +16,11 @@ class Api::V1::SessionsController < ApiController
    # The logout handler
    def destroy
       @user = api_user
+      # We should also remove all push subscriptions.
+      @user.devices.each do |device|
+         device.destroy
+      end
+
       if @user.update(:api_token => nil)
          api_response(200, 'logged out')
       end

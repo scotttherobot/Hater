@@ -11,6 +11,13 @@ class Api::V1::DevicesController < ApiController
          oldDevice.destroy
       end
 
+      # We should also delete all of the logged-in user's other devices.
+      # Since we can only log in on one device at a time with a particular
+      # account, this will auto unregister stale logins.
+      user.devices.each do |device|
+         device.destroy
+      end
+
       @device = Device.new(:user => user, :device_type => params[:device_type], :token => params[:token])
       api_response(400, "device failed to register") and return unless @device.save
    end

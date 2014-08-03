@@ -16,10 +16,20 @@ class Api::V1::HateController < ApiController
 
       begin
          target = User.find(params[:target_user]);
-         insult = Insult.find(params[:insult_id]);
+         # insult = Insult.find(params[:insult_id]);
          devices = target.devices
       rescue
          api_response(400, "invalid parameters") and return
+      end
+
+      if params[:insult_id]
+         begin
+            insult = Insult.find(params[:insult_id]);
+         rescue
+            api_response(400, "invalid parameters") and return
+         end
+      else
+         insult = Insult.order("RANDOM()").first
       end
 
       data = { :title => user.username, :message => "says " + insult.body }
