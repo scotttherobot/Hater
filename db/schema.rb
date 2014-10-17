@@ -15,6 +15,8 @@ ActiveRecord::Schema.define(version: 20140729010534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
+  enable_extension "uuid-ossp"
 
   create_table "devices", force: true do |t|
     t.string   "token"
