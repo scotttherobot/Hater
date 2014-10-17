@@ -7,6 +7,7 @@ class Api::V1::HateController < ApiController
       user = api_user
 
       # Set up GCM
+      # TODO: Move this key to secrets.yml and get a new one. As of this commit, I've voided this key in the GCM dev console.
       GCM.key = "AIzaSyA8_Rt7vvplk3gR8YrQwPjKJ-5QAyGvj8U"
 
       # Setup APNS
